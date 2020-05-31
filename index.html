@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="pages/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around The U.S.</title>
+</head>
+<body>
+    <div class="page">
+            <header class="header">
+                <div class="header__container">
+                    <img src="./images/logo.svg" alt="logo" class="logo">
+                    <hr class="header__line">
+                </div>
+            </header>
+            <main class="main">
+                <section class="profile">
+                    <div class="profile__container">
+                        <img src="./images/avatar.png" alt="avatar" class="profile__avatar">
+                        <div class="profile__сard">
+                            <h1 class="profile__name">Jacques Cousteau</h1>
+                            <button class="profile__edit"></button>
+                            <p class="profile__title">Explorer</p>
+                        </div>
+                        <button class="profile__add"></button>
+                    </div>
+                </section>
+                <section class="photo">
+                    <div class="photo__container">
+                        <div class="photo__item">
+                            <img src="./images/photo-1.png" alt="Yosemite Valley" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Yosemite Valley</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                        <div class="photo__item">
+                            <img src="./images/photo-2.png" alt="Lake Louise" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Lake Louise</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                        <div class="photo__item">
+                            <img src="./images/photo-3.png" alt="Bald Mountains" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Bald Mountains</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                        <div class="photo__item">
+                            <img src="./images/photo-4.png" alt="Latemar" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Latemar</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                        <div class="photo__item">
+                            <img src="./images/photo-5.png" alt="Vanois National Park" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Vanois National Park</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                        <div class="photo__item">
+                            <img src="./images/photo-6.png" alt="Lago di Braies" class="photo__image">
+                            <div class="photo__name">
+                                <p class="photo__text">Lago di Braies</p>
+                                <img src="./images/like.svg" alt="like" class="photo__like">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="footer">
+                <div class="footer__container">
+                    <p class="footer__copyright">&copy; 2020 Around The U.S.</p>
+                </div>
+            </footer>
+            <div class="popup">
+                <div class="popup__content">
+                    <form action="#" class="form">
+                        <p class="form__text">Edit profile</p>
+                        <input type="text" class="form__input form__input_type_name" value="Jacques Cousteau">
+                        <hr class="form__line">
+                        <input type="text" class="form__input form__input_type_title" value="Explorer">
+                        <hr class="form__line">
+                        <button type="submit" class="form__save">Save</button>
+                    </form>
+                    <button class="popup__close"></button>
+                </div>
+            </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

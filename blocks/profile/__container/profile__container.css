@@ -1,0 +1,32 @@
+.profile__container {
+    max-width: 882px;
+    min-height: 120px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 13.5% 69.5% 17%;
+    align-items: center;
+    grid-template-areas:
+    "avatar card add"
+}
+
+@media screen and (max-width: 1024px) {
+    .photo__container {
+        width: 585px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .profile__container {
+        margin: auto;
+        width: 282px;
+        min-height: 286px;
+        grid-template-columns: auto;
+        grid-template-rows: 42% 40.5% 17.5%;
+        align-items: center;
+        justify-content: center;
+        grid-template-areas:
+        "avatar" 
+        "card"
+        "add"
+    }
+}
