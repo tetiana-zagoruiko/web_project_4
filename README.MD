@@ -1,5 +1,6 @@
-# Project 3: From Portland to Portland
-A webpage about a coast-to-coast trip of the US.
+# Project 3: Around The U.S.
+It is an interactive page where users can add, remove, or like photos.
+
 
 **About the project**
 
