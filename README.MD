@@ -10,3 +10,5 @@ Stylesheets and images are located in separate folders and organized into blocks
 # Description of technologies and techniques used
 CSS: animation, transformation, pseudo-elements, pseudo-classes, flexbox
 HTML: iframe
+
+https://tetiana-zagoruiko.github.io/web_project_4/
