@@ -14,6 +14,7 @@ Stylesheets and images are located in separate folders and organized into blocks
 **Description of technologies and techniques used**
 
 CSS: pseudo-elements, pseudo-classes, flexbox, grid layout. 
+
 JS: working with CSS Classes, changing text content.
 
 **Project on GitHub Pages**
