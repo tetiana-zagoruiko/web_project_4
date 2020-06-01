@@ -1,4 +1,4 @@
-.profile__сard {
+.profile__card {
     grid-area: card;
     padding-left: 30px;
     list-style: none;
@@ -8,14 +8,14 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .profile__сard {
+    .profile__card {
         padding-left: 25px;
         max-width: 370px;
     }
 }
 
 @media screen and (max-width: 685px) {
-    .profile__сard {
+    .profile__card {
         min-height: 66px;
         padding: 0;
         margin: 0;
