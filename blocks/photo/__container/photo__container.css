@@ -1,4 +1,5 @@
 .photo__container {
+    width: 882px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
