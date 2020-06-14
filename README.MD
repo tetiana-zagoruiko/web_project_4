@@ -1,4 +1,4 @@
-# Project 3: Around The U.S.
+# Project 5: Around The U.S.
 It's an interactive page where users will be able to add, remove, or like photos.
 
 
