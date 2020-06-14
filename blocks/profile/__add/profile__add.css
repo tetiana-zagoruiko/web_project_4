@@ -10,7 +10,8 @@
     background-repeat: no-repeat;
     background-position: center; 
     background-size: 22px 22px;
-    transition: opacity 0.3s linear;   
+    transition: opacity 0.3s linear;
+    outline: none;   
 }
 
 .profile__add:hover {

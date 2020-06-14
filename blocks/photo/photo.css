@@ -4,6 +4,7 @@
 @import url(./__like/photo__like.css);
 @import url(./__name/photo__name.css);
 @import url(./__text/photo__text.css);
+@import url(./__remove/photo__remove.css);
 
 
 .photo {

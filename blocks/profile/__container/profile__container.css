@@ -6,7 +6,7 @@
     grid-template-columns: 13.5% 69.5% 17%;
     align-items: center;
     grid-template-areas:
-    "avatar card add"
+    "avatar card add";
 }
 
 @media screen and (max-width: 1024px) {
@@ -27,6 +27,6 @@
         grid-template-areas:
         "avatar" 
         "card"
-        "add"
+        "add";
     }
 }

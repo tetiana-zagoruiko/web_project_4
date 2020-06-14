@@ -11,7 +11,8 @@
     background-repeat: no-repeat;
     background-position: center; 
     background-size: 10px 10px; 
-    transition: opacity 0.3s linear;        
+    transition: opacity 0.3s linear;
+    outline: none;        
 }
 
 .profile__edit:hover {

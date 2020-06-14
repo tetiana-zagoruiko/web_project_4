@@ -1,5 +1,7 @@
 .photo__image {
-    max-width: 282px;
-    height: auto;
-    margin-bottom: 0px;
+    min-width: 282px;
+    min-height: 282px;
+    background-size: cover;
+    background-image: url(…);
+    border-radius: 10px 10px 0 0; 
 }

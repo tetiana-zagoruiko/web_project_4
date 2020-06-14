@@ -9,3 +9,14 @@
     line-height: 17px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);;
 }
+
+@media screen and (max-width: 685px) {
+    .form__input {
+        height: 24px;
+        margin: 0 20px 20px 20px;
+        font-size: 12px;
+        line-height: 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+        color: #C4C4C4;
+    }
+}
