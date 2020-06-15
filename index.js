@@ -12,6 +12,7 @@ const addPhotoCloseButton = addPhotoModal.querySelector('.popup__close');
 const imageCloseButton = imageModal.querySelector('.popup__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileName = document.querySelector('.profile__name');
+const list = document.querySelector('.photo__container');
 
 //Form data
 const inputName = editProfileModal.querySelector('.form__input_type_name');
@@ -32,26 +33,14 @@ function formSubmitHandler(event) {
     togglePopup(editProfileModal);
 }
 
-function photoSubmitHandler(event) {
-    event.preventDefault();
-    const new_card = {
-        name: photoTitle.value,
-        link: photoUrl.value
-    };
-    renderCard(new_card);
-    togglePopup(addPhotoModal);
-}
-
 form.addEventListener('submit', formSubmitHandler);
-addPhotoModal.addEventListener('submit', photoSubmitHandler);
 
 editButton.addEventListener('click', () => {
-    togglePopup(editProfileModal)
+    togglePopup(editProfileModal);
 });
 editProfileCloseButton.addEventListener('click', () => {
     togglePopup(editProfileModal);
 });
-
 
 addButton.addEventListener('click', () => {
     togglePopup(addPhotoModal);
@@ -63,7 +52,6 @@ addPhotoCloseButton.addEventListener('click', () => {
 imageCloseButton.addEventListener('click', () => {
     togglePopup(imageModal);
 });
-
 
 
 const initialCards = [
@@ -107,13 +95,13 @@ const createCard = (data) => {
     cardTitle.textContent = data.name;
     cardImage.style.backgroundImage = `url(${data.link})`;
 
-    cardLikeButton.addEventListener('click', function () {
+    cardLikeButton.addEventListener('click', () => {
         cardLikeButton.classList.toggle('photo__like_active');
     });
 
     cardRemoveButton.addEventListener('click', (e) => {
         e.target.closest('.photo__item').remove();
-    }) 
+    }); 
 
     cardImage.addEventListener('click', () => {
         togglePopup(imageModal);
@@ -123,13 +111,21 @@ const createCard = (data) => {
     return cardElement;
 }
 
-const list = document.querySelector('.photo__container');
 
 const renderCard = (data) => {
     list.prepend(createCard(data));
 }
 
-initialCards.forEach((data) => {
-    renderCard(data);
-})
- 
+initialCards.forEach(renderCard);
+
+function photoSubmitHandler(event) {
+    event.preventDefault();
+    const newCard = {
+        name: photoTitle.value,
+        link: photoUrl.value
+    };
+    renderCard(newCard);
+    togglePopup(addPhotoModal);
+}
+
+addPhotoModal.addEventListener('submit', photoSubmitHandler);
