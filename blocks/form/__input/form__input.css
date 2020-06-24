@@ -1,18 +1,20 @@
 .form__input {
     padding-bottom: 10px;
-    height: 27px;
+    height: 14px;
     border: none;
     margin: 0 36px 30px 36px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    outline: none; 
 }
 
 @media screen and (max-width: 685px) {
     .form__input {
-        height: 24px;
+        height: 12px;
+        padding-bottom: 12px;
         margin: 0 20px 20px 20px;
         font-size: 12px;
         line-height: 15px;

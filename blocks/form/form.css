@@ -1,17 +1,18 @@
 @import url(./__input/form__input.css);
 @import url(./__save/form__save.css);
 @import url(./__text/form__text.css);
+@import url(./__error/form__error.css);
+@import url(./__input/_type/form__input_type_error.css);
+@import url(./__save/_disabled/form__save_disabled.css);
 
 
 .form {
-    margin-top: 50px;
-    margin-left: 45px;
     background: white;
     color: black;
     border-radius: 10px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     width: 430px;
-    height: 330px;
+    min-height: 330px;
     display: flex; 
     flex-direction: column;
 }
@@ -19,8 +20,7 @@
 @media screen and (max-width: 685px) {
     .form {
         width: 240px;
-        height: 258px;
-        margin-top: 30px;
-        margin-left: 30px;  
+        min-height: 258px;
     }
 }
+

@@ -1,11 +1,6 @@
 @import url('./_theme/popup__content_theme_transparent.css');
 
 .popup__content {
-    display: flex;
+    position: relative;
 }
 
-@media screen and (max-width: 685px) {
-    .header {
-        padding: 28px 0 0 0;
-    }
-}

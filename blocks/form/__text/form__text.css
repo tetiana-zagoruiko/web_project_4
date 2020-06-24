@@ -1,4 +1,5 @@
 .form__text {
+    height: 23px;
     margin: 34px 64px 54px 36px;
     width: 330px;
     height: 23px;
@@ -10,9 +11,11 @@
 
 @media screen and (max-width: 685px) {
     .form__text {
-        margin: 30px 34px 36px 20px;
+        height: 18px;
+        margin: 30px 20px 36px 20px;
         font-size: 18px;
         line-height: 22px;
+        width: 240px;
     }
 }
 
