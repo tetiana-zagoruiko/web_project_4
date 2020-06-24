@@ -1,10 +1,10 @@
-# Project 3: Around The U.S.
-It's an interactive page where users will be able to add, remove, or like photos.
+# Project 6: Around The U.S.
+It's an interactive page where users will be able to add, remove, or like photos and edit the user's profile.
 
 
 **About the project**
 
-It's a responsive single-page website with a popup box where user can change "Name" and "About me" fields. 
+It's a responsive single-page website with a popups.
 
 **Description of the project and its functionality**
 
@@ -15,7 +15,7 @@ Stylesheets and images are located in separate folders and organized into blocks
 
 CSS: pseudo-elements, pseudo-classes, flexbox, grid layout. 
 
-JS: working with CSS Classes, changing text content.
+JS: working with CSS Classes, changing text content, form validation.
 
 **Project on GitHub Pages**
 
