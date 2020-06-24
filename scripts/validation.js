@@ -1,4 +1,4 @@
-function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
+function showErrorMessage(input, form, {errorClass, inputErrorClass}) {
     const error = document.querySelector('#' + input.id + '-error');
     error.textContent = input.validationMessage;
 
@@ -6,7 +6,7 @@ function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
     input.classList.add(inputErrorClass);
 }
 
-function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
+function hideErrorMessage(input, form, {errorClass, inputErrorClass}) {
     const error = document.querySelector('#' + input.id + '-error');
     error.textContent = '';
 
@@ -16,13 +16,15 @@ function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
 
 function checkInputValidity(input, form, rest) {
     if(input.validity.valid) {
-        hideErrorMessage(input, form, rest)
+        hideErrorMessage(input, form, rest);
     } else {
-        showErrorMessage(input, form, rest)
+        showErrorMessage(input, form, rest);
     }
 }
 
-function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
+function toggleButtonState(inputs, button, {inactiveButtonClass}) {
+    // If I change "every" to "some", the submit button is active when 
+    // just one field is valid while the second is invalid. 
     const isValid = inputs.every((input) => input.validity.valid)
     if(isValid) {
         button.classList.remove(inactiveButtonClass);
@@ -36,7 +38,7 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, ..
 
     forms.forEach((form) => {
         form.addEventListener('submit', ((e) => {
-            e.preventDefault()
+            e.preventDefault();
         }))
 
         const inputs = [...form.querySelectorAll(inputSelector)];
