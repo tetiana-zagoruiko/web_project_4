@@ -1,4 +1,5 @@
 // Wrappers
+const allModals = document.querySelectorAll('.popup');
 const editProfileModal = document.querySelector('.popup_type_edit-profile');
 const addPhotoModal = document.querySelector('.popup_type_add-photo');
 const imageModal = document.querySelector('.popup_type_image');
@@ -26,6 +27,23 @@ function togglePopup(modal) {
 }
 
 
+allModals.forEach((modal) => {
+    modal.addEventListener('click', evt => {
+        if (evt.target == modal) {
+            togglePopup(modal);
+        }
+    });
+});
+
+document.addEventListener('keydown', event => {
+    allModals.forEach((modal) => {
+        if (modal.classList.contains('popup_opened') && event.key === 'Escape') {
+            togglePopup(modal);
+        }
+    })
+});
+
+
 function formSubmitHandler(event) {
     event.preventDefault();
     profileName.textContent = inputName.value;
@@ -34,6 +52,7 @@ function formSubmitHandler(event) {
 }
 
 form.addEventListener('submit', formSubmitHandler);
+
 
 editButton.addEventListener('click', () => {
     togglePopup(editProfileModal);
@@ -53,16 +72,6 @@ addPhotoCloseButton.addEventListener('click', () => {
 imageCloseButton.addEventListener('click', () => {
     togglePopup(imageModal);
 });
-
-window.onclick = function (event) {
-    if (event.target == imageModal) {
-        togglePopup(imageModal);
-    } else if (event.target == editProfileModal) {
-        togglePopup(editProfileModal);
-    } else if (event.target == addPhotoModal) {
-        togglePopup(addPhotoModal);
-    }
-}
 
 
 const initialCards = [
