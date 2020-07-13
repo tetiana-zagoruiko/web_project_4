@@ -19,6 +19,6 @@ JS: working with CSS Classes, changing text content, form validation, code refac
 
 **Project on GitHub Pages**
 
-[Link to the project on GitHub Pages](https://tetiana-zagoruiko.github.io/web_project_4/)
+[Link to the project on GitHub Pages](https://tetiana-zagoruiko.github.io/web_project_4/index.html)
 
 
