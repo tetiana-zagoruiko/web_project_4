@@ -1,9 +1,32 @@
-// Wrappers
-const allModals = document.querySelectorAll('.popup');
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
+const defaultConfig = {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__save",
+    inactiveButtonClass: "form__save_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__error"
+};
+
 const editProfileModal = document.querySelector('.popup_type_edit-profile');
 const addPhotoModal = document.querySelector('.popup_type_add-photo');
+
+const addCardForm = addPhotoModal.querySelector('.form');
+const editProfileForm = editProfileModal.querySelector('.form');
+
+const editProfileValidation = new FormValidator(defaultConfig, editProfileForm);
+const addCardValidation = new FormValidator(defaultConfig, addCardForm);
+
+editProfileValidation.enableValidation();
+addCardValidation.enableValidation();
+
+
+// Wrappers
+const allModals = document.querySelectorAll('.popup');
 const imageModal = document.querySelector('.popup_type_image');
 const form = document.querySelector('.form');
+const cardTemplateSelector = '.photo-template';
 
 //Buttons and other DOM elements
 const editButton = document.querySelector('.profile__edit');
@@ -101,39 +124,10 @@ const initialCards = [
     }
 ];
 
-const cardTemplate = document.querySelector('.photo-template').content.querySelector('.photo__item');
-
-const createCard = (data) => {
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardTitle = cardElement.querySelector('.photo__text');
-    const cardImage = cardElement.querySelector('.photo__image');
-    const cardLikeButton = cardElement.querySelector('.photo__like');
-    const cardRemoveButton = cardElement.querySelector('.photo__remove');
-    const figureImage = imageModal.querySelector('.figure__image');
-    const figureCaption = imageModal.querySelector('.figure__caption');
-
-    cardTitle.textContent = data.name;
-    cardImage.style.backgroundImage = `url(${data.link})`;
-
-    cardLikeButton.addEventListener('click', () => {
-        cardLikeButton.classList.toggle('photo__like_active');
-    });
-
-    cardRemoveButton.addEventListener('click', (e) => {
-        e.target.closest('.photo__item').remove();
-    });
-
-    cardImage.addEventListener('click', () => {
-        togglePopup(imageModal);
-        figureImage.src = `${data.link}`;
-        figureCaption.textContent = data.name;
-    })
-    return cardElement;
-}
-
 
 const renderCard = (data) => {
-    list.prepend(createCard(data));
+    const card = new Card(data, cardTemplateSelector);
+    list.prepend(card.createCard());
 }
 
 initialCards.forEach(renderCard);
