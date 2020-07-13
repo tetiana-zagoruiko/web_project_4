@@ -46,7 +46,7 @@ class Card {
         imageModal.querySelector('.figure__caption').textContent = text;
     }
 
-    createCard = () => {
+    createCard() {
         const element = this._getCardTemplate();
 
         this._card = element;
