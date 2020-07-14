@@ -65,7 +65,7 @@ allModals.forEach((modal) => {
 const handleEscape = (e) => {
     e.preventDefault();
     const openedPopups = document.querySelector('.popup_opened');
-    if (event.which === 27) {
+    if (e.which === 27) {
         closeModal(openedPopups);
     }
 };
