@@ -11,7 +11,7 @@ const closeModal = (modal) => {
 const handleEscape = (e) => {
     e.preventDefault();
     const openedPopups = document.querySelector('.popup_opened');
-    if (event.which === 27) {
+    if (e.which === 27) {
         closeModal(openedPopups);
     }
 };
@@ -51,13 +51,15 @@ class Card {
 
     _handleDeleteCard() {
         this._card.remove();
+        this._card = null;
     }
 
     _handlePreviewPicture(link, text) {
         const imageModal = document.querySelector('.popup_type_image');
-        imageModal.querySelector('.figure__image').src = `${link}`;
+        const figureImage = imageModal.querySelector('.figure__image');
+        figureImage.src = `${link}`;
+        figureImage.alt = `The image of ${text}`;
         imageModal.querySelector('.figure__caption').textContent = text;
-        imageModal.querySelector('.figure__image').alt = `The image of ${text}`;
         openModal(imageModal);
     }
 
