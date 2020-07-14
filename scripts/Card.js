@@ -1,6 +1,20 @@
-function togglePopup(modal) {
-    modal.classList.toggle('popup_opened');
-}
+const openModal = (modal) => {
+    modal.classList.add('popup_opened');
+    document.addEventListener('keyup', handleEscape);
+};
+
+const closeModal = (modal) => {
+    modal.classList.remove('popup_opened');
+    document.removeEventListener('keyup', handleEscape);
+};
+
+const handleEscape = (e) => {
+    e.preventDefault();
+    const openedPopups = document.querySelector('.popup_opened');
+    if (event.which === 27) {
+        closeModal(openedPopups);
+    }
+};
 
 class Card {
     constructor(data, cardTemplateSelector) {
@@ -27,7 +41,7 @@ class Card {
         const cardImage = this._card.querySelector('.photo__image');
 
         cardLikeButton.addEventListener('click', this._handleLikeIcon);
-        cardRemoveButton.addEventListener('click', this._handleDeleteCard);
+        cardRemoveButton.addEventListener('click', () => this._handleDeleteCard());
         cardImage.addEventListener('click', () => this._handlePreviewPicture(this._link, this._text));
     }
 
@@ -35,15 +49,16 @@ class Card {
         evt.target.classList.toggle('photo__like_active');
     }
 
-    _handleDeleteCard(evt) {
-        evt.target.closest('.photo__item').remove();
+    _handleDeleteCard() {
+        this._card.remove();
     }
 
     _handlePreviewPicture(link, text) {
         const imageModal = document.querySelector('.popup_type_image');
-        togglePopup(imageModal);
         imageModal.querySelector('.figure__image').src = `${link}`;
         imageModal.querySelector('.figure__caption').textContent = text;
+        imageModal.querySelector('.figure__image').alt = `The image of ${text}`;
+        openModal(imageModal);
     }
 
     createCard() {

@@ -44,57 +44,59 @@ const inputTitle = editProfileModal.querySelector('.form__input_type_title');
 const photoTitle = addPhotoModal.querySelector('.form__input_type_photo-title');
 const photoUrl = addPhotoModal.querySelector('.form__input_type_photo-url');
 
+const openModal = (modal) => {
+    modal.classList.add('popup_opened');
+    document.addEventListener('keyup', handleEscape);
+};
 
-function togglePopup(modal) {
-    modal.classList.toggle('popup_opened');
-}
-
+const closeModal = (modal) => {
+    modal.classList.remove('popup_opened');
+    document.removeEventListener('keyup', handleEscape);
+};
 
 allModals.forEach((modal) => {
     modal.addEventListener('click', evt => {
-        if (evt.target == modal) {
-            togglePopup(modal);
+        if (evt.target === modal) {
+            closeModal(modal);
         }
     });
 });
 
-document.addEventListener('keydown', event => {
-    allModals.forEach((modal) => {
-        if (modal.classList.contains('popup_opened') && event.key === 'Escape') {
-            togglePopup(modal);
-        }
-    })
-});
+const handleEscape = (e) => {
+    e.preventDefault();
+    const openedPopups = document.querySelector('.popup_opened');
+    if (event.which === 27) {
+        closeModal(openedPopups);
+    }
+};
 
-
-function formSubmitHandler(event) {
-    event.preventDefault();
+function formSubmitHandler(e) {
+    e.preventDefault();
     profileName.textContent = inputName.value;
     profileTitle.textContent = inputTitle.value;
-    togglePopup(editProfileModal);
+    closeModal(editProfileModal);
 }
 
-form.addEventListener('submit', formSubmitHandler);
-
-
 editButton.addEventListener('click', () => {
-    togglePopup(editProfileModal);
+    openModal(editProfileModal);
 });
 
 editProfileCloseButton.addEventListener('click', () => {
-    togglePopup(editProfileModal);
+    closeModal(editProfileModal);
 });
 
 addButton.addEventListener('click', () => {
-    togglePopup(addPhotoModal);
+    openModal(addPhotoModal);
 });
+
 addPhotoCloseButton.addEventListener('click', () => {
-    togglePopup(addPhotoModal);
+    closeModal(addPhotoModal);
 });
 
 imageCloseButton.addEventListener('click', () => {
-    togglePopup(imageModal);
+    closeModal(imageModal);
 });
+
 
 
 const initialCards = [
@@ -132,14 +134,15 @@ const renderCard = (data) => {
 
 initialCards.forEach(renderCard);
 
-function photoSubmitHandler(event) {
-    event.preventDefault();
+function photoSubmitHandler(e) {
+    e.preventDefault();
     const newCard = {
         name: photoTitle.value,
         link: photoUrl.value
     };
     renderCard(newCard);
-    togglePopup(addPhotoModal);
+    closeModal(addPhotoModal);
 }
 
 addPhotoModal.addEventListener('submit', photoSubmitHandler);
+form.addEventListener('submit', formSubmitHandler);
