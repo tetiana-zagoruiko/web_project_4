@@ -1,0 +1,25 @@
+@import url(./__container/header__container.css);
+
+.header {
+    padding: 45px 199px 0 199px;
+}
+
+@media screen and (max-width: 1279px) {
+    .header {
+        padding-left: 99px;
+        padding-right: 99px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .header {
+        padding-left: 49px;
+        padding-right: 49px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .header {
+        padding: 28px 0 0 0;
+    }
+}

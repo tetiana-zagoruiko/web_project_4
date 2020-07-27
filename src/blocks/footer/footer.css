@@ -1,0 +1,27 @@
+@import url(./__container/footer__container.css);
+@import url(./__copyright/footer__copyright.css);
+
+
+.footer {
+    padding: 45px 199px 60px 199px;
+}
+
+@media screen and (max-width: 1279px) {
+    .footer {
+        padding-left: 99px;
+        padding-right: 99px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .footer {
+        padding-left: 49px;
+        padding-right: 49px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .footer {
+        padding: 28px 19px 36px 19px;
+    }
+}

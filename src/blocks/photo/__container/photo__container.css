@@ -1,0 +1,22 @@
+.photo__container {
+    width: 882px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: none;
+}
+
+@media screen and (max-width: 1279px) {
+    .photo__container {
+        width: 585px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .photo__container {
+        max-width: 282px;
+    }
+}
