@@ -1,4 +1,4 @@
-# Project 7: Around The U.S.
+# Project 8: Around The U.S.
 It's an interactive page where users will be able to add, remove, or like photos and edit the user's profile.
 
 
@@ -15,7 +15,7 @@ Stylesheets and images are located in separate folders and organized into blocks
 
 CSS: pseudo-elements, pseudo-classes, flexbox, grid layout. 
 
-JS: working with CSS Classes, changing text content, form validation, code refactoring, modules.
+JS: working with CSS Classes, changing text content, form validation, code refactoring, modules, loose coupling.
 
 **Project on GitHub Pages**
 
