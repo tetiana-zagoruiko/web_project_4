@@ -7,8 +7,6 @@ import Section from './components/Section.js';
 import UserInfo from './components/UserInfo.js';
 import {
     defaultConfig,
-    editProfileModal,
-    addPhotoModal,
     addCardForm,
     editProfileForm,
     cardTemplateSelector,
