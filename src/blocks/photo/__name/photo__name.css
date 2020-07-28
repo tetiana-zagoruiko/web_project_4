@@ -1,0 +1,7 @@
+.photo__name {
+    margin: 25px 15px 31px 21px;
+    display: flex;
+    justify-content: space-between;
+    width: 246px;
+    height: 29px;
+}

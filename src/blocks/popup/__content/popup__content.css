@@ -1,0 +1,6 @@
+@import url('./_theme/popup__content_theme_transparent.css');
+
+.popup__content {
+    position: relative;
+}
+

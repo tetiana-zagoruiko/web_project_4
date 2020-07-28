@@ -1,0 +1,23 @@
+.profile__card {
+    grid-area: card;
+    padding-left: 30px;
+    list-style: none;
+    max-width: 428px;
+    min-height: 77px;
+    position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile__card {
+        padding-left: 25px;
+        max-width: 370px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .profile__card {
+        min-height: 66px;
+        padding: 0;
+        margin: 0;
+    }
+}

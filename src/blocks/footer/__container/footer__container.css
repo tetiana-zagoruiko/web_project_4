@@ -1,0 +1,12 @@
+.footer__container {
+    margin: auto;
+    max-width: 882px;
+    min-height: 22px;
+}
+
+@media screen and (max-width: 685px) {
+    .footer__container {
+        min-width: 282px;
+        height: 14px;
+    }
+}
