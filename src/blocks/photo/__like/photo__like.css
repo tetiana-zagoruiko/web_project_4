@@ -1,20 +1,11 @@
 .photo__like {
-    background-image: url(../../../images/like.svg);
-    height: 18.13px;
-    width: 21px;
-    margin-right: 2px;
-    margin-top: 5px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    transition: opacity 0.3s linear;     
-  
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 20px;
+   height: 34px;
+   top: 0px;
+   right: 24px;
 }
 
-.photo__like:hover {
-    opacity: 0.6;
-}
-
-.photo__like_active {
-    background-image: url(../../../images/like-active.svg);
-}

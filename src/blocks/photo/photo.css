@@ -5,11 +5,22 @@
 @import url(./__name/photo__name.css);
 @import url(./__text/photo__text.css);
 @import url(./__remove/photo__remove.css);
+@import url(./__like-count/photo__like-count.css);
+@import url(./__like-button/photo__like-button.css);
 
 
 .photo {
     padding: 51px 199px 0 199px;
 }
+
+.photo__like_active {
+    background-image: url(../../images/like-active.svg);
+}
+
+.photo__remove_hide {
+    display: none;
+}
+
 
 @media screen and (max-width: 1279px) {
     .photo {
