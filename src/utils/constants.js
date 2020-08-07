@@ -15,3 +15,6 @@ export const list = '.photo__container';
 export const addPhotoButton = document.querySelector('.profile__add');
 export const inputName = document.querySelector('.form__input_type_name');
 export const inputTitle = document.querySelector('.form__input_type_title');
+export const avatar = document.querySelector('.profile__avatar');
+export const formSave = document.querySelector('.form__save');
+export const myId = 'ac847238ac28b619430e1d03';

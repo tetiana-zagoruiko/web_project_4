@@ -15,7 +15,10 @@ import {
     list,
     addPhotoButton,
     inputName,
-    inputTitle
+    inputTitle,
+    avatar,
+    formSave,
+    myId
 } from "./utils/constants.js";
 
 const api = new Api({
@@ -29,14 +32,8 @@ const api = new Api({
 api.getUserInfo()
     .then(res => {
         profile.setUserInfo({ name: res.name, title: res.about });
+        avatar.src = res.avatar;
     })
-
-function getUserID() {
-    api.getUserInfo()
-    .then(res => {
-        return res._id;
-    })
-}
 
 api.getCardList().then(res => {
     const cardList = new Section({
@@ -48,18 +45,50 @@ api.getCardList().then(res => {
                     imageModal.open(data);
                 },
                 handleDeleteClick: (cardID) => {
-                    api.removeCard(cardID);
-                }
+                    const deleteForm = new PopupWithForm({
+                        popupSelector: ".popup_type_delete-card",
+                        handleFormSubmit: () => {
+                            api.removeCard(cardID);
+                            card.deleteCard();
+                            deleteForm.close();
+                        }
+                    });
+                    deleteForm.setEventListeners();
+                    deleteForm.open();
+                },
+                handleLikeClick: (cardID) => {
+                    if (card.wasLiked() === false) {
+                        api.changeLikeCardStatus(cardID, true)
+                            .then(res => {
+                                const countLike = res.likes.length;
+                                card.like(countLike);
+                            })
+                    } else {
+                        api.changeLikeCardStatus(cardID, false)
+                            .then(res => {
+                                const countLike = res.likes.length;
+                                card.dislike(countLike);
+                            })
+                    };
+                },
+                handleLikeIcon: () => {
+                    if (data.likes.length > 0) {
+                        data.likes.forEach(cardLikes => {
+                            if (cardLikes._id === myId) {
+                                card.likeAtRendering();
+                            }
+                        });
+                    }
+                },
+                handleDeleteIcon: () => {
+                    if (myId !== data.owner._id) {
+                        card.hideTrashButton();
+                    }
+                },
             },
                 cardTemplateSelector);
             const cardElement = card.createCard();
             cardList.addItem(cardElement);
-            api.getUserInfo()
-            .then(res => {
-                if (res._id !== data.owner._id) {
-                    card.hideTrashButton();
-                }
-                })
         }
     }, list
     );
@@ -68,18 +97,48 @@ api.getCardList().then(res => {
     const addPhotoForm = new PopupWithForm({
         popupSelector: ".popup_type_add-photo",
         handleFormSubmit: (data) => {
+            renderLoading(true);
             api.addCard(data)
                 .then(res => {
                     const newCard = new Card({
-                        data,
+                        data: res,
                         handleCardClick: () => {
                             imageModal.open(data);
                         },
                         handleDeleteClick: (cardID) => {
-                            api.removeCard(cardID);
-                        }
+                            const deleteForm = new PopupWithForm({
+                                popupSelector: ".popup_type_delete-card",
+                                handleFormSubmit: () => {
+                                    api.removeCard(cardID);
+                                    newCard.deleteCard();
+                                    deleteForm.close();
+                                }
+                            });
+                            deleteForm.setEventListeners();
+                            deleteForm.open();
+                        },
+                        handleLikeClick: (cardID) => {
+                            if (newCard.wasLiked() === false) {
+                                api.changeLikeCardStatus(cardID, true)
+                                    .then(res => {
+                                        const countLike = res.likes.length;
+                                        newCard.like(countLike);
+                                    })
+                            } else {
+                                api.changeLikeCardStatus(cardID, false)
+                                    .then(res => {
+                                        const countLike = res.likes.length;
+                                        newCard.dislike(countLike);
+                                    })
+                            };
+                        },
+                        handleLikeIcon: () => {
+                        },
+                        handleDeleteIcon: () => {
+                        },
                     },
                         cardTemplateSelector);
+                    renderLoading(false);
                     cardList.addItem(newCard.createCard());
                     addPhotoForm.close();
                 })
@@ -111,9 +170,14 @@ imageModal.setEventListeners();
 const profileForm = new PopupWithForm({
     popupSelector: ".popup_type_edit-profile",
     handleFormSubmit: (data) => {
-        profile.setUserInfo(data); 
-        api.setUserInfo(data);
-        profileForm.close();
+        renderLoading(true);
+        api.setUserInfo(data)
+            .then(res => {
+                profile.setUserInfo(data);
+                renderLoading(false);
+                profileForm.close();
+            })
+
     }
 });
 
@@ -126,5 +190,28 @@ editButton.addEventListener('click', () => {
 });
 
 
+const avatarForm = new PopupWithForm({
+    popupSelector: ".popup_type_edit-avatar",
+    handleFormSubmit: (data) => {
+        renderLoading(true);
+        api.setUserAvatar(data.link)
+            .then(res => {
+                avatar.src = data.link;
+                renderLoading(false);
+                avatarForm.close();
+            })
+    }
+});
 
+avatarForm.setEventListeners();
+avatar.addEventListener('click', () => {
+    avatarForm.open();    
+});
 
+function renderLoading(isLoading) {
+    if (isLoading) {
+        formSave.textContent += "...";
+    } else {
+        formSave.textContent = formSave.textContent.slice(0,-3);
+    }
+}

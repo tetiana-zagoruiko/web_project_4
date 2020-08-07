@@ -73,6 +73,26 @@
                     <button type="button" class="popup__close"></button>
                 </div> 
             </div>
+            <div class="popup popup_type_edit-avatar">
+                <div class="popup__content">
+                    <form action="#" class="form">
+                        <p class="form__text">Change profile picture</p>                
+                        <input id="photo-url" name="link" type="url" class="form__input form__input_type_photo-url"
+                            placeholder="https://somewebsite.com/someimage.jpg" required>
+                        <button type="submit" class="form__save">Save</button>
+                    </form>
+                    <button class="popup__close"></button>
+                </div>
+            </div>
+            <div class="popup popup_type_delete-card">
+                <div class="popup__content">
+                    <form action="#" class="form">
+                        <p class="form__text">Are you sure?</p>
+                        <button type="submit" class="form__save">Yes</button>
+                    </form>
+                    <button class="popup__close"></button>
+                </div>
+            </div>
     </div>
     <template class="photo-template">
         <li class="photo__item">
@@ -82,7 +102,7 @@
                 <h2 class="photo__text"></h2>
                 <div class="photo__like">
                     <button type="button" class="photo__like-button"></button>
-                    <h3 class="photo__like-count"></h3>
+                <h3 class="photo__like-count"></h3>
                 </div>
             </div>
         </li> 

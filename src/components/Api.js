@@ -43,8 +43,22 @@ class Api {
 
     }
 
-    changeLikeCardStatus ({ cardID, like }) {
-
+    changeLikeCardStatus (cardID, like) {
+        if (like === true) {
+            return fetch(this._baseUrl + '/cards/likes/' + cardID, {
+                headers: this._headers,
+                method: "PUT"
+            })
+                .then(res => res.ok ? res.json() : Promise.reject('Error' + res.statusText))
+                .catch(err => console.log(err))
+        } else {
+            return fetch(this._baseUrl + '/cards/likes/' + cardID, {
+                headers: this._headers,
+                method: "DELETE"
+            })
+                .then(res => res.ok ? res.json() : Promise.reject('Error' + res.statusText))
+                .catch(err => console.log(err))
+        }
     }
 
     setUserInfo(data) {
@@ -60,8 +74,16 @@ class Api {
         .catch(err => console.log(err))
     }
 
-    setUserAvatar({ avatar }) {
-
+    setUserAvatar(avatar) {
+        return fetch(this._baseUrl + '/users/me/avatar', {
+            headers: this._headers,
+            method: "PATCH",
+            body: JSON.stringify({
+                avatar
+            })
+        })
+            .then(res => res.ok ? res.json() : Promise.reject('Error' + res.statusText))
+            .catch(err => console.log(err))
     }
 
 }

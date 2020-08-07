@@ -2,7 +2,14 @@
     grid-area: avatar;
     border-radius: 50%;
     width: 100%;
+    max-height: 120px;
     height: auto;
+    transition: opacity 0.3s linear;  
+}
+
+.profile__avatar:hover {
+    opacity: 0.6;
+    cursor: url(../../../images/avatar-cursor.svg), auto;
 }
 
 @media screen and (max-width: 685px) {
