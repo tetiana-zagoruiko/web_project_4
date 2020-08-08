@@ -35,58 +35,67 @@ api.getUserInfo()
         avatar.src = res.avatar;
     })
 
+ 
+const deleteForm = new PopupWithForm({
+    popupSelector: ".popup_type_delete-card",
+    handleFormSubmit: () => {
+    },
+});
+deleteForm.setEventListeners(); 
+
+function cardCreating(data) {
+    const card = new Card({
+        data,
+        handleCardClick: () => {
+            imageModal.open(data);
+        },
+        handleDeleteClick: (cardID) => {
+            deleteForm.setDeleteHandler(() => {
+                api.removeCard(cardID);
+                card.deleteCard();
+                deleteForm.close();
+            });
+            deleteForm.open();
+        },
+        handleLikeClick: (cardID) => {
+            if (card.wasLiked() === false) {
+                api.changeLikeCardStatus(cardID, true)
+                    .then(result => {
+                        const countLike = result.likes.length;
+                        card.like(countLike);
+                    })
+            } else {
+                api.changeLikeCardStatus(cardID, false)
+                    .then(result => {
+                        const countLike = result.likes.length;
+                        card.dislike(countLike);
+                    })
+            };
+        },
+        handleLikeIcon: () => {
+            if (data.likes.length > 0) {
+                data.likes.forEach(cardLikes => {
+                    if (cardLikes._id === myId) {
+                        card.likeAtRendering();
+                    }
+                });
+            }
+        },
+        handleDeleteIcon: () => {
+            if (myId !== data.owner._id) {
+                card.hideTrashButton();
+            }
+        },
+    },
+        cardTemplateSelector);
+    return card;
+}
+
 api.getCardList().then(res => {
     const cardList = new Section({
         items: res,
         renderer: (data) => {
-            const card = new Card({
-                data,
-                handleCardClick: () => {
-                    imageModal.open(data);
-                },
-                handleDeleteClick: (cardID) => {
-                    const deleteForm = new PopupWithForm({
-                        popupSelector: ".popup_type_delete-card",
-                        handleFormSubmit: () => {
-                            api.removeCard(cardID);
-                            card.deleteCard();
-                            deleteForm.close();
-                        }
-                    });
-                    deleteForm.setEventListeners();
-                    deleteForm.open();
-                },
-                handleLikeClick: (cardID) => {
-                    if (card.wasLiked() === false) {
-                        api.changeLikeCardStatus(cardID, true)
-                            .then(res => {
-                                const countLike = res.likes.length;
-                                card.like(countLike);
-                            })
-                    } else {
-                        api.changeLikeCardStatus(cardID, false)
-                            .then(res => {
-                                const countLike = res.likes.length;
-                                card.dislike(countLike);
-                            })
-                    };
-                },
-                handleLikeIcon: () => {
-                    if (data.likes.length > 0) {
-                        data.likes.forEach(cardLikes => {
-                            if (cardLikes._id === myId) {
-                                card.likeAtRendering();
-                            }
-                        });
-                    }
-                },
-                handleDeleteIcon: () => {
-                    if (myId !== data.owner._id) {
-                        card.hideTrashButton();
-                    }
-                },
-            },
-                cardTemplateSelector);
+            const card = cardCreating(data);
             const cardElement = card.createCard();
             cardList.addItem(cardElement);
         }
@@ -100,44 +109,7 @@ api.getCardList().then(res => {
             renderLoading(true);
             api.addCard(data)
                 .then(res => {
-                    const newCard = new Card({
-                        data: res,
-                        handleCardClick: () => {
-                            imageModal.open(data);
-                        },
-                        handleDeleteClick: (cardID) => {
-                            const deleteForm = new PopupWithForm({
-                                popupSelector: ".popup_type_delete-card",
-                                handleFormSubmit: () => {
-                                    api.removeCard(cardID);
-                                    newCard.deleteCard();
-                                    deleteForm.close();
-                                }
-                            });
-                            deleteForm.setEventListeners();
-                            deleteForm.open();
-                        },
-                        handleLikeClick: (cardID) => {
-                            if (newCard.wasLiked() === false) {
-                                api.changeLikeCardStatus(cardID, true)
-                                    .then(res => {
-                                        const countLike = res.likes.length;
-                                        newCard.like(countLike);
-                                    })
-                            } else {
-                                api.changeLikeCardStatus(cardID, false)
-                                    .then(res => {
-                                        const countLike = res.likes.length;
-                                        newCard.dislike(countLike);
-                                    })
-                            };
-                        },
-                        handleLikeIcon: () => {
-                        },
-                        handleDeleteIcon: () => {
-                        },
-                    },
-                        cardTemplateSelector);
+                    const newCard = cardCreating(res);
                     renderLoading(false);
                     cardList.addItem(newCard.createCard());
                     addPhotoForm.close();
