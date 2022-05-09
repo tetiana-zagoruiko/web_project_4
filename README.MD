@@ -17,8 +17,5 @@ CSS: pseudo-elements, pseudo-classes, flexbox, grid layout.
 
 JS: working with CSS Classes, changing text content, form validation, code refactoring, modules.
 
-**Project on GitHub Pages**
-
-[Link to the project on GitHub Pages](https://tetiana-zagoruiko.github.io/web_project_4/index.html)
 
 
